@@ -9,16 +9,18 @@ var people = [
 	{ name: 'Peter', parent: 'Alejandro' }
 ];
 
-let treeArr = people.reduce((accum, {name, parent}) => {
-	const childName = {name: name, children: []};
-	const parentName = {name: parent, children: [childName]};
-
+const treeArr = people.reduce((accum, {name, parent}) => {
 	function match(parentObj) {
 		parentObj.name === parent;
 	}
 
+	const childName = {name: name, children: []};
+	const parentName = {name: parent, children: [childName]};
+
 	if(accum.length === 0) accum.push(parentName);
 	else if(accum.findIndex(match) !== -1) accum[accum.findIndex(match)].children.push(parentName);
+	// else (accum.findIndex(match) === -1) accum[accum.findIndex(match)].push(parentName);
+	
 	return accum;
 }, []);
 console.log(treeArr);
