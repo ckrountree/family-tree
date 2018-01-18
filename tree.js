@@ -9,13 +9,13 @@ var people = [
 	{ name: 'Peter', parent: 'Alejandro' }
 ];
 
-function kidToParent({name, parent}){
-	var childName = {name: name, children:[]};
-	var parentName = {name: parent, children: [childName]};
-	parentName.children.push(childName);
+const treeArr = people.reduce((accum, {name, parent}) => {
+	const childName = {name: name, children: []};
+	const parentName = {name: parent, children: [childName]};
 
-	return parentName;
-}
+	if(accum.length === 0) accum.push(parentName);
 
-const newArr = people.map((child) => kidToParent(child));
-console.log(newArr);
+	return accum;
+}, []);
+
+console.log(treeArr);
