@@ -8,3 +8,11 @@ var people = [
 	{ name: 'Steve', parent: 'Alejandro' },
 	{ name: 'Peter', parent: 'Alejandro' }
 ];
+
+function kidToParent({name, parent}){
+	var childName = {name: name, children:[]};
+	var parentName = {name: parent, children: [childName]};
+	parentName.children.push(childName);
+
+	return parentName;
+}
