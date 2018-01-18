@@ -16,3 +16,6 @@ function kidToParent({name, parent}){
 
 	return parentName;
 }
+
+const newArr = people.map((child) => kidToParent(child));
+console.log(newArr);
